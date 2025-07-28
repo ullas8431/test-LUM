@@ -10,6 +10,69 @@ The build process collects artifacts, runs target parsing, organizes files into 
 ## 📁 Directory Structure
 ivi_cicd_bitbake_build-main is the main project folder containing everything related to the IVI CI/CD BitBake build system.
 [Directory Structure](https://github.com/ullas8431/test-LUM/blob/main/LUM-folder-structure.png)
+
+## 📁 buildsystem/
+The heart of the build system. Contains scripts, configurations, and BitBake layers.
+
+### 🔹 bin/
+Contains executable scripts or helper tools used during the build process.
+### 🔹 build/
+Working directory where builds are executed.
+conf/: Contains core BitBake config files like:
+local.conf: Local build settings.
+bblayers.conf: Lists active layers for the build.
+### 🔹 build_configs/
+Platform-specific build configurations.
+COMMON/: Shared settings across all builds.
+HCP3/, OIA/: Specific hardware or platform targets.
+### 📦 BitBake Layers (meta-eso_*)
+Each layer represents a modular part of the build process.
+
+### 🔹 meta-eso_aosp/
+Integrates with Android Open Source Project.
+conf/: Layer configuration.
+recipes/: BitBake recipes for AOSP components.
+### 🔹 meta-eso_build/
+Core build logic.
+classes/: Custom BitBake classes.
+conf/: Layer config.
+lib/: Python or shell libraries.
+recipes/: Build instructions for packages.
+### 🔹 meta-eso_finalize/
+Final steps in the build process.
+conf/, recipes/: Final packaging, cleanup, or post-processing.
+### 🔹 meta-eso_image/
+Image creation logic.
+classes/, conf/, recipes/: Defines how the final image is built.
+### 🔹 meta-eso_image-preparation/
+Prepares the image (e.g., partitioning, bootloader setup).
+conf/, recipes/
+### 🔹 meta-eso_install/
+Handles installation logic.
+classes/, conf/, recipes/
+###🔹 meta-eso_packaging/
+Manages packaging of build artifacts.
+classes/, conf/, recipes/
+###🔹 meta-eso_prepare/
+Pre-build preparation steps.
+conf/, recipes/
+###🔹 meta-eso_processing/
+Post-build processing or transformation.
+conf/, recipes/
+### 🐍 pylib/
+Contains Python utilities used in the build system.
+
+Common/: Shared Python modules.
+misc/: Miscellaneous utilities.
+helpers/: Helper functions.
+parser/: Parsing logic.
+storage/: Data storage or caching logic.
+### ⚙️ variant_configs/
+Contains configuration files for different build variants (e.g., LUM, IFU).
+Each .conf file defines settings for a specific variant.
+### 🔧 Tools
+cariad-synctool: Likely a tool for syncing code or artifacts with Cariad systems.
+synctool: General sync utility.
  
 
 ## 🔄 Build Workflow
