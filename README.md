@@ -1,6 +1,4 @@
-# Corrected code to generate a complete README.md file for the LUM build process
-
-readme_content = """# LUM Build Process
+# LUM Build Process
 
 ## 📘 Introduction
 This document outlines the LUM (Linux Unified Module) build process using BitBake. The process packages system images, bootloaders, tools, and configuration files into a final LUM image archive for deployment.
