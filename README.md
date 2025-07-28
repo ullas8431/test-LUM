@@ -7,6 +7,11 @@ The build process collects artifacts, runs target parsing, organizes files into 
 
 ---
 
+## 📁 Directory Structure
+ivi_cicd_bitbake_build-main is the main project folder containing everything related to the IVI CI/CD BitBake build system.
+[Directory Structure](https://github.com/ullas8431/test-LUM/blob/main/LUM-folder-structure.png)
+ 
+
 ## 🔄 Build Workflow
 The build process is defined as a custom BitBake task `pkg_LUM`, which runs after initialization and before the main build.
 
