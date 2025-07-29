@@ -177,6 +177,6 @@ The final LUM package (*_images.tgz) contains:
 
 ## LUM Build Sequence Diagram
 
-
+![LUM-sequence.png](https://github.com/ullas8431/test-LUM/blob/main/LUM-sequence.png)
 
 
