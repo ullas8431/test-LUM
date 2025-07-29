@@ -79,12 +79,32 @@ Contains Python utilities used in the build system.
 - synctool: General sync utility.
 
 ---
+## 🔄 Build Workflow
+The build process is defined as a custom BitBake task `pkg_LUM`, which runs after initialization and before the main build.
 
-##🧭 Getting Started with the LUM Build 
+### Key Steps:
+- Copy system images and metadata
+- Include bootloader binaries and kernel images
+- Add project-specific binaries (e.g., safety-island for OIA)
+- Include DSP firmware and exception lists
+- Copy partition layout files
+- Package Android kernel images
+- Integrate manufacturing and UCC tools (These are needed for Android boot flow validation and fastboot flashing.)
+- Add signing utilities and autorunner scripts
+- Run target parser for IOC configurations
+- Create minimal ext4 filesystem for HUD (These are likely required to re-sign key partitions before deployment.)
+- Archive all files into a `.tgz` package
+
+---
+
+
+
+
+
+## 🧭 Getting Started with the LUM Build 
 
 ### 🔹 1. Understand What LUM Is
-LUM (Logical Unit Module) is a packaging system that bundles everything needed to flash or update target partitions.
-- It includes:
+LUM (Logical Unit Module) is a packaging system that bundles everything needed to flash or update target partitions. It includes:
   - Kernel, DTBs, system image (sys.ext4)
   - Bootloaders (SBL, LK, t-base, etc.)
   - DSP firmware
@@ -141,37 +161,21 @@ The do_pkg_LUM() task performs:
 ## 🔹 4. Final Output
 The final LUM package (*_images.tgz) contains:
 
-- System images
-- Bootloaders
-- Android kernel
-- DSP firmware
-- Partition maps
+- System images (sys.ext4, sys.ext4.metadata, sys_roothashsigned.bin, Image, dtb.img, dtbo.img)
+- Bootloaders (lk.bin, t-base.img, etc.)
+- Android kernel :  boot.img, vbmeta.img, etc.
+- DSP firmware : abox_firmware_evt1.bin
+- Partition maps : ufs0lun*.txt
 - Safety binaries (if applicable)
-- Signature tools
-- Exception lists
-- Target metadata
+- Signature tools and metadata: partnumbers.json, exceptionlist.txt
+- Dummy image: hud_basic.ext4
+- Manufacturing tools: mnfctool/, ucctool/
 
 
 -----
 
 
-## 🔄 Build Workflow
-The build process is defined as a custom BitBake task `pkg_LUM`, which runs after initialization and before the main build.
 
-### Key Steps:
-- Copy system images and metadata
-- Include bootloader binaries and kernel images
-- Add project-specific binaries (e.g., safety-island for OIA)
-- Include DSP firmware and exception lists
-- Copy partition layout files
-- Package Android kernel images
-- Integrate manufacturing and UCC tools
-- Add signing utilities and autorunner scripts
-- Run target parser for IOC configurations
-- Create minimal ext4 filesystem for HUD
-- Archive all files into a `.tgz` package
-
----
 
 
 
