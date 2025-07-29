@@ -175,7 +175,7 @@ The final LUM package (*_images.tgz) contains:
 -----
 
 
-
+## LUM Build Sequence Diagram
 
 
 
