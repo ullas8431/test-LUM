@@ -11,7 +11,7 @@ firmware, partition maps, Android kernel files, and metadata required for deploy
 ## 📁 Directory Structure
 ivi_cicd_bitbake_build-main is the main project folder containing everything related to the IVI CI/CD BitBake build system.
 
-![LUM-folder-structure.png](https://github.com/ullas8431/test-LUM/blob/main/LUM-folder-structure.png)
+![LUM-folder-structure.png](https://github.com/ullas8431/test-LUM/blob/main/LUM-folder-structure.png
 
 ## 📁 buildsystem/
 The heart of the build system. Contains scripts, configurations, and BitBake layers.
